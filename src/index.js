@@ -5,20 +5,26 @@ import "./css/main.css";
 // Say hello
 console.log("🦊 Hello! Edit me in src/index.js");
 
+PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
+  .then(function(available){
+    if(available){
+      // We can proceed with the creation of a PublicKeyCredential
+      // with this authenticator
+      alert("Yes!");
+    } else {
+      // Use another kind of authenticator or a classical login/password
+      // workflow
+      alert("Uuh...no.");
+    }
+  }).catch(function(err){
+    // Something went wrong
+    console.error(err);
+  });
+
 var button = document.getElementById("button");
 
 // Fetching the challengeBuffer before the onclick event.
 button.addEventListener("click", async () => {
-
-    const isAvailable = await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
-
-    if (isAvailable) {
-        console.log("Available");
-        alert("Yeah!");
-    } else {
-        console.log("Not available");
-        alert("Uuh... no...");
-    }
 
     const options = {
         publicKey: {
