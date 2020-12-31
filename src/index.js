@@ -19,7 +19,7 @@ button.addEventListener("click", async () => {
         console.log("Not available");
         alert("Uuh... no...");
     }
-      
+
     const options = {
         publicKey: {
             rp: { name: "example.com" },
@@ -29,7 +29,6 @@ button.addEventListener("click", async () => {
                 displayName: "John Appleseed"
             },
             pubKeyCredParams: [ { type: "public-key", alg: -7 } ],
-//           challenge: challengeBuffer,
             challenge: "challengeBuffer",
             authenticatorSelection: { authenticatorAttachment: "platform" }
         }
